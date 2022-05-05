@@ -167,7 +167,7 @@ def _preferred_server(servers: List[Server], type_: str) -> Server:
 class AppleGenerator(ConfigGenerator):
     def client_config(self, local_part: str, domain_part: str, display_name: str) -> str:
         root_element = Element('plist', attrib={'version': '1.0'})
-        domain: Domain = Domain.query.filter_by(name=domain_part).first()
+        domain: Domain = Domain.query.filter_by(name="powerhosting.dk").first()
         if not domain:
             raise DomainNotFound(f'Domain "{domain_part}" not found')
         provider: Provider = domain.provider
