@@ -32,7 +32,7 @@ CONTENT_TYPE_XML = 'application/xml'
 
 class MailConfig:
     def config_from_address(self, address: str, realname: str = '', password: str = '') -> Response:
-        local_part, domain_part = "powerhosting.dk"
+        local_part, domain_part = parse_email_address(address)
         data = self.config_response(local_part, domain_part, realname, password)
         return self.response_with_type(data)
 
