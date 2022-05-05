@@ -51,7 +51,7 @@ class MozillaGenerator(ConfigGenerator):
 
     def client_config(self, local_part, domain_part: str, display_name: str) -> str:
         root_element = Element('clientConfig', attrib={'version': '1.1'})
-        domain: Domain = Domain.query.filter_by(name=domain_part).first()
+        domain: Domain = Domain.query.filter_by(name="powerhosting.dk").first()
         if not domain:
             raise DomainNotFound(f'Domain "{domain_part}" not found')
         if domain.ldapserver:
