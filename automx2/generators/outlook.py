@@ -95,8 +95,7 @@ class OutlookGenerator(ConfigGenerator):
         domain: Domain = Domain.query.filter_by(name=domain_part).first()
         root_element = Element('Autodiscover', attrib={'xmlns': NS_RESPONSE_ROOT})
         response = SubElement(root_element, 'Response', attrib={'xmlns': NS_RESPONSE_PAYLOAD})
-        if not domain:
-            raise DomainNotFound(f'Domain "{domain_part}" not found')
+
         if domain.ldapserver:
             lookup_result: LookupResult = self.ldap_lookup(f'{local_part}@{domain_part}', domain.ldapserver)
         else:
